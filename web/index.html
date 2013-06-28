@@ -27,16 +27,35 @@
     </head>
     <body>
         <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+            <h1>RCM test app</h1>
+            <div id="deviceready" class="blink"></div>
+            <div id="search">
+                <p id="Ind">Indicidual search: </p>
+                <input type="text" id="searchCriteria"/>
+                <input type="button" id="runSearch" onclick="javascript: runSearch();" value="Search" />
             </div>
+            <div id="results">
+                <p>Results:</p>
+                <div id="resultsContainer"></div>
+            </div>
+            
+            <input type="text" id="TestBox"/>
         </div>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src="js/jquery-1.10.1.min.js"></script>
+        <script src="js/knockout-2.2.1.js"></script>
         <script type="text/javascript">
             app.initialize();
+            
+            function runSearch() {
+                var searchCriteria = document.getElementById("searchCriteria").value;
+
+                document.getElementById("TestBox").value = searchCriteria;
+                //document.getElementById("resultsContainer").innerHTML = searchCriteria;
+                
+                
+            }
         </script>
     </body>
 </html>
