@@ -38,6 +38,11 @@
                 Enter a name to search for
             </h3>
             
+            <div data-bind="with:errorx">
+                <h3 data-bind="text: Fault.Reason">
+                </h3>
+            </div>
+            
             
             <table data-bind="with: results">
                 <tbody data-bind="foreach: SearchResults">
