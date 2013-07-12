@@ -113,3 +113,8 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+#runSearch {
+    width: 200px;
+    height: 100px;
+}
