@@ -31,13 +31,21 @@
             <div id="deviceready" class="blink"></div>
             <div id="search">
                 <p id="Ind">Individual search: </p>
-                <input type="text" id="searchCriteria"/>
-                <input type="button" id="runSearch" onclick="javascript: runSearch();" value="Search" />
+                <input type="text" id="searchCriteria" data-bind="value: searchCriteria"/>
+                <input type="button" id="runSearch" data-bind="click:search" value="Search" />
             </div>
-            <div id="results">
-                <p>Results:</p>
-                <div id="resultsContainer"></div>
-            </div>
+            <h3 data-bind="visible: !isValid()">
+                Enter a name to search for
+            </h3>
+            
+            
+            <table data-bind="with: results">
+                <tbody data-bind="foreach: SearchResults">
+                    <tr>
+                        <td><span data-bind="text: DisplayName" /></td>
+                    </tr>    
+                </tbody>
+            </table>
             
             <input type="text" id="TestBox"/>
         </div>
@@ -45,17 +53,9 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script src="js/jquery-1.10.1.min.js"></script>
         <script src="js/knockout-2.2.1.js"></script>
+        <script src="js/viewmodel.js"></script>
         <script type="text/javascript">
             app.initialize();
-            
-            function runSearch() {
-                var searchCriteria = document.getElementById("searchCriteria").value;
-
-                document.getElementById("TestBox").value = searchCriteria;
-                //document.getElementById("resultsContainer").innerHTML = searchCriteria;
-                
-                
-            }
         </script>
     </body>
 </html>
