@@ -32,7 +32,7 @@
             <h1>RCM TEST APP</h1>
             <div id="deviceready" class="blink"></div>
             <div id="search">
-                <p id="Ind">Individual search: </p>
+                <p id="Ind">Individual search: <strong data-bind="text: searchCount"></strong> </p>
                 <input type="text" id="searchCriteria" data-bind="value: searchCriteria"/>
                 <input type="button" id="runSearch" data-bind="click:search" value="Search" />
             </div>
@@ -43,7 +43,7 @@
             <div data-bind="with: lastError">
                 <h3 data-bind="text: Fault.Reason">
                 </h3>
-            </div>            
+            </div>
             
             <table data-bind="with: results">
                 <tbody data-bind="foreach: SearchResults">

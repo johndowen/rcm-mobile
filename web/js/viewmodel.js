@@ -28,17 +28,23 @@
     
     this.search = function () {
         self.logLastStep("About to Search");
-        self.searchCount(self.searchCount + 1);
+        self.searchCount(self.searchCount() + 1);
 
         var url = buildSearchUrl(alphaRoot, alphaApiKey, this.searchCriteria());
 
         $.ajax(
             {
                 url: url
-            }).done(function(response) {
+            }).done(function (response) {
                 self.logLastStep("Success Response Received");
-                $("body").text(response.Count);
-                self.results(response);
+                
+                try {
+                    $("body").text(response.Count);
+                    self.results(response);
+                } catch(e) {
+                    self.logLastStep("Error");
+                } 
+
             }).fail(function (error)
             {
                 self.logLastStep("Error Response Received");
@@ -68,6 +74,8 @@
             //+ "&format=json&successCallback=x.searchResponse&errorCallback=x.errorResponse";
             + "&format=json";
     }
+
+    self.searchCount(0);
 }
 
 // Activates knockout.js
