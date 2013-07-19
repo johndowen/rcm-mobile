@@ -36,10 +36,10 @@
             {
                 url: url
             }).done(function (response) {
-                self.logLastStep("Success Response Received " + response.Count);
+                self.logLastStep("Success Response Received " + response);
                 
                 try {
-                    $("body").text(response.Count);
+                    //$("body").text(response.Count);
                     self.results(response);
                 } catch(e) {
                     self.logLastStep("Error");
