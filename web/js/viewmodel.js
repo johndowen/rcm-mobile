@@ -5,6 +5,8 @@
     var rcmDemoRoot = "rcmdemo.boardex.com";
     var alphaApiKey = "AA5C2D5B-D128-4BB4-AAC5-C778C7BECD17";
     var alphaRoot = "alpharcmoutput";
+    var localApiKey = "AA5C2D5B-D128-4BB4-AAC5-C778C7BECD17";
+    var localRoot = "mdl0158.mdlimited.com";
 
     this.searchCriteria = ko.observable("bill");
     this.results = ko.observable();
@@ -19,7 +21,7 @@
     this.searchOld = function () {
         this.logLastStep("About to Search");
         
-        var url = buildSearchUrl(alphaRoot, alphaApiKey, this.searchCriteria());
+        var url = buildSearchUrl(localRoot, localApiKey, this.searchCriteria());
         var script = $("<script src='" + url + "'></script>");
         $("head").append(script);
         
@@ -30,7 +32,7 @@
         self.logLastStep("About to Search");
         self.searchCount(self.searchCount() + 1);
 
-        var url = buildSearchUrl(alphaRoot, alphaApiKey, this.searchCriteria());
+        var url = buildSearchUrl(localRoot, localApiKey, this.searchCriteria());
 
         $.ajax(
             {
