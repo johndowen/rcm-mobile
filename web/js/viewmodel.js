@@ -10,7 +10,8 @@
     this.results = ko.observable();
     this.lastError = ko.observable();
     this.logLastStep = ko.observable();
-    
+    this.searchCount = ko.observable();
+
     this.isValid = function () {
         return this.searchCriteria().length > 0;
     };
@@ -26,7 +27,8 @@
     };
     
     this.search = function () {
-        this.logLastStep("About to Search");
+        self.logLastStep("About to Search");
+        self.searchCount(self.searchCount + 1);
 
         var url = buildSearchUrl(alphaRoot, alphaApiKey, this.searchCriteria());
 
@@ -35,6 +37,7 @@
                 url: url
             }).done(function(response) {
                 self.logLastStep("Success Response Received");
+                $("body").text(response.Count);
                 self.results(response);
             }).fail(function (error)
             {
