@@ -32,15 +32,14 @@
 
         $.ajax(
             {
-                url: url,
-                dataType:"json"
+                url: url
             }).done(function(response) {
                 self.logLastStep("Success Response Received");
                 self.results(response);
             }).fail(function (error)
             {
                 self.logLastStep("Error Response Received");
-                self.lastError(error);
+                $("body").html(error.responseText);
             });
 
         this.logLastStep("Search Request Sent");
