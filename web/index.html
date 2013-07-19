@@ -27,6 +27,7 @@
     </head>
     <body>
         <div class="app">
+            <div data-bind="text: logLastStep"></div>
             <h1>RCM test app</h1>
             <div id="deviceready" class="blink"></div>
             <div id="search">
@@ -41,8 +42,7 @@
             <div data-bind="with:errorx">
                 <h3 data-bind="text: Fault.Reason">
                 </h3>
-            </div>
-            
+            </div>            
             
             <table data-bind="with: results">
                 <tbody data-bind="foreach: SearchResults">
