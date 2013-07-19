@@ -36,7 +36,7 @@
             {
                 url: url
             }).done(function (response) {
-                self.logLastStep("Success Response Received");
+                self.logLastStep("Success Response Received " + response.Count);
                 
                 try {
                     $("body").text(response.Count);
