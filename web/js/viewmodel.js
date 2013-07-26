@@ -5,8 +5,10 @@
     var rcmDemoRoot = "rcmdemo.boardex.com";
     var alphaApiKey = "AA5C2D5B-D128-4BB4-AAC5-C778C7BECD17";
     var alphaRoot = "alpharcmoutput";
-    var localApiKey = "AA5C2D5B-D128-4BB4-AAC5-C778C7BECD17";
-    var localRoot = "mdl0158.mdlimited.com";
+    //var localApiKey = "AA5C2D5B-D128-4BB4-AAC5-C778C7BECD17";
+    var localApiKey = "eb83b426-dc6d-4813-82b7-0ac8bbce345f";
+    //var localRoot = "mdl0158.mdlimited.com";
+    var localRoot = "systemdl.boardex.com";
 
     this.searchCriteria = ko.observable("bill");
     this.results = ko.observable();
@@ -49,8 +51,7 @@
 
             }).fail(function (error)
             {
-                self.logLastStep("Error Response Received");
-                $("body").html(error.responseText);
+                self.logLastStep("Error Response Received - " + error.status + " - " + error.statusText);
             });
 
         this.logLastStep("Search Request Sent");
