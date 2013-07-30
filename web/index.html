@@ -26,36 +26,41 @@
         <title>Hello World</title>
     </head>
     <body>
+        <div id="Log" data-bind="text: logLastStep"></div>
+
         <div class="app">
-            <h1>RCM test app</h1>
+            <h1>RCM TEST APP</h1>
             <div id="deviceready" class="blink"></div>
             <div id="search">
-                <p id="Ind">Individual search: </p>
-                <input type="text" id="searchCriteria"/>
-                <input type="button" id="runSearch" onclick="javascript: runSearch();" value="Search" />
+                <p id="Ind">Individual search: <strong data-bind="text: searchCount"></strong> </p>
+                <input type="text" id="searchCriteria" data-bind="value: searchCriteria"/>
+                <input type="button" id="runSearch" data-bind="click:search" value="Search" />
             </div>
-            <div id="results">
-                <p>Results:</p>
-                <div id="resultsContainer"></div>
+            <h3 data-bind="visible: !isValid()">
+                Enter a name to search for
+            </h3>
+            
+            <div data-bind="with: lastError">
+                <h3 data-bind="text: Fault.Reason">
+                </h3>
             </div>
             
-            <input type="text" id="TestBox"/>
+            <table data-bind="with: results">
+                <tbody data-bind="foreach: SearchResults">
+                    <tr>
+                        <td><span data-bind="text: DisplayName" /></td>
+                    </tr>    
+                </tbody>
+            </table>
         </div>
+            
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script src="js/jquery-1.10.1.min.js"></script>
         <script src="js/knockout-2.2.1.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-            
-            function runSearch() {
-                var searchCriteria = document.getElementById("searchCriteria").value;
-
-                document.getElementById("TestBox").value = searchCriteria;
-                //document.getElementById("resultsContainer").innerHTML = searchCriteria;
-                
-                
-            }
-        </script>
+        <script src="js/viewmodel.js"></script>
+            <script type="text/javascript">
+                app.initialize();
+            </script>
     </body>
 </html>
